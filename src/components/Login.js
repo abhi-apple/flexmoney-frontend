@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -8,7 +8,7 @@ const Login = () => {
 
   const [emailError, setEmailError] = useState("");
   const [backendError, setBackendError] = useState("");
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -46,6 +46,7 @@ const Login = () => {
       const submitResponse = await submitFormData(formData);
 
       if (submitResponse.success) {
+        navigate("/completed");
         console.log("Form data submitted successfully:", formData);
       } else {
         console.error("Form data submission failed:", submitResponse.error);

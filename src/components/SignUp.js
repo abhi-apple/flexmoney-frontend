@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const SignUp = () => {
   const [emailError, setEmailError] = useState("");
   const [backendError, setBackendError] = useState("");
   const [agelimit, setagelimit] = useState("");
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     name: "",
@@ -65,6 +66,7 @@ const SignUp = () => {
 
       if (submitResponse.success) {
         console.log("Form data submitted successfully:", formData);
+        navigate("/completed");
       } else {
         console.error("Form data submission failed:", submitResponse.error);
       }
@@ -158,7 +160,7 @@ const SignUp = () => {
             value={formData.email}
             onChange={handleChange}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="name@flowbite.com"
+            placeholder="name@gmail.com"
             required
           />
           {emailError && (
