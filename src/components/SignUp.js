@@ -42,13 +42,16 @@ const SignUp = () => {
       setagelimit("");
     }
 
-    const response = await fetch("http://localhost:8000/check-user", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: formData.email }),
-    });
+    const response = await fetch(
+      "https://calm-plum-goat-veil.cyclic.app/check-user",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: formData.email }),
+      }
+    );
 
     const existingUserData = await response.json();
 
@@ -70,13 +73,16 @@ const SignUp = () => {
 
   const submitFormData = async (formData) => {
     try {
-      const response = await fetch("http://localhost:8000/new-user", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://calm-plum-goat-veil.cyclic.app/new-user",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const data = await response.json();
 
